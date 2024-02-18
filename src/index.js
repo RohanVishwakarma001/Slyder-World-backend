@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-// require("dotenv").config();
 import connectDB from "./db/index.js";
 import { app } from "./app.js";
 dotenv.config({
@@ -7,6 +6,9 @@ dotenv.config({
 });
 connectDB()
   .then(() => {
+    app.get("/", (req, res) => {
+      res.send("<h1>Hello Slyder</h1>");
+    });
     app.listen(process.env.PORT || 8000, () => {
       console.log(`Server started on port ${process.env.PORT}`);
     });
